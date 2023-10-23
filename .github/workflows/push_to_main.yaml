@@ -36,6 +36,10 @@
             registry: ghcr.io
             username: ${{ github.actor }}
             password: ${{ secrets.PACKPUB_SECRET }}
+        - name: Debug Info
+          run: |
+           echo "GitHub Actor: ${{ github.actor }}"
+           echo "Secret: ${{ secrets.PACKPUB_SECRET }}"
         - name: Build and publish updated image
           run: |
             mvn package
