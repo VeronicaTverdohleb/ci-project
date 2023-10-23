@@ -34,8 +34,8 @@
           uses: docker/login-action@v3
           with:
             registry: ghcr.io
-            username: veronica123tverdohleb
-            password: ${{ secrets.PACKPUB_SECRET }}
+            username: ${{ github.actor }}
+            password: ${{ secrets.GH_PAT }}
         - name: Build and publish updated image
           run: |
             mvn package
