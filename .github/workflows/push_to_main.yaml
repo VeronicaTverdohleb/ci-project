@@ -34,17 +34,13 @@
           uses: docker/login-action@v3
           with:
             registry: ghcr.io
-            username: ${{ github.actor }}
+            username: Veronica123Tverdohleb
             password: ${{ secrets.PACKPUB_SECRET }}
-        - name: Debug Info
-          run: |
-           echo "GitHub Actor: ${{ github.actor }}"
-           echo "Secret: ${{ secrets.PACKPUB_SECRET }}"
         - name: Build and publish updated image
           run: |
             mvn package
-            docker build . --tag ghcr.io/VeronicaTverdohleb/ex7testcoverage:latest
-            docker push ghcr.io/VeronicaTverdohleb/ex7testcoverage:latest
+            docker build . --tag ghcr.io/Veronica123Tverdohleb/ex7testcoverage:latest
+            docker push ghcr.io/Veronica123Tverdohleb/ex7testcoverage:latest
 
     update_coverage_report:
       needs: run_tests
