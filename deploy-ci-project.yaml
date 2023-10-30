@@ -2,8 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: ci-project
-labels:
-  app: ci-project
+  labels:
+    app: ci-project
 spec:
   selector:
     matchLabels:
@@ -28,11 +28,11 @@ kind: Service
 metadata:
   name: ci-project
   labels:
-  app: ci-project
+    app: ci-project
 spec:
   type: NodePort
   selector:
-  app: ci-project
+    app: ci-project
   ports:
    - name: http
      port: 8080 # The port that the service is running on in the cluster
