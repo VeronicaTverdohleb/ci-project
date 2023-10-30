@@ -22,20 +22,20 @@ jobs:
         run: |
          export SHELL=/bin/bash
          eval $(minikube -p minikube docker-env)
-         docker build -f ./Dockerfile -t local/cicd-demo .
+         docker build -f ./Dockerfile -t local/ci-project .
          echo -n "Verifying images:"
          docker images
       - name: Deploy to Minikube
         run: |
-          kubectl apply -f deploy-cicd-demo.yaml
-          kubectl wait --for=condition=Ready pod -l app=cicd-demo
+          kubectl apply -f deploy-ci-project.yaml
+          kubectl wait --for=condition=Ready pod -l app=ci-project
           kubectl get all
       - name: Test service URLs
         run: |
-          echo "SERVICE_URL=$(minikube service cicd-demo --url)"
-          kubectl port-forward service/cicd-demo 8080:8080 &> /dev/null &
+          echo "SERVICE_URL=$(minikube service ci-project --url)"
+          kubectl port-forward service/ci-project 8080:8080 &> /dev/null &
           sleep 5
-          kubectl port-forward service/cicd-demo 8080:8080 &> /dev/null &
+          kubectl port-forward service/ci-project 8080:8080 &> /dev/null &
       - run: |
          curl -i http://localhost:8080/
       - name: Cleanup

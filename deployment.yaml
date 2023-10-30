@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: cicd-demo
+  name: ci-project
 labels:
-  app: cicd-demo
+  app: ci-project
 spec:
   selector:
     matchLabels:
-      app: cicd-demo
+      app: ci-project
   replicas: 1
   template:
     metadata:
-      name: cicd-demo
+      name: ci-project
       labels:
-        app: cicd-demo
+        app: ci-project
     spec:
       containers:
-        - name: cicd-demo
+        - name: ci-project
           image: local/cicd-demo:latest # Image that will be used inside the container in the cluster
           imagePullPolicy: Never
           ports:
@@ -26,13 +26,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: cicd-demo
+  name: ci-project
   labels:
-  app: cicd-demo
+  app: ci-project
 spec:
   type: NodePort
   selector:
-  app: cicd-demo
+  app: ci-project
   ports:
    - name: http
      port: 8080 # The port that the service is running on in the cluster
