@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: ci-project
-          image: local/cicd-demo:latest # Image that will be used inside the container in the cluster
+          image: local/ci-project:latest # Image that will be used inside the container in the cluster
           imagePullPolicy: Never
           ports:
            - containerPort: 8080 # The port that the container is running on in the cluster
